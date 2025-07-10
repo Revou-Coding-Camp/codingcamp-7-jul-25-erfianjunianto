@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const validationErrorDate = document.getElementById('validation-error-date');
     const filterBtns = document.querySelectorAll('.filter-btn');
     const filterContainer = document.querySelector('.filter-buttons');
+    const deleteAllBtn = document.getElementById('delete-all-btn');
 
     // Mengambil data dari localStorage atau menggunakan array kosong
     let todos = JSON.parse(localStorage.getItem('todos')) || [];
@@ -35,6 +36,8 @@ document.addEventListener('DOMContentLoaded', () => {
             if (activeFilter === 'pending') return !todo.completed;
             return true; // 'all'
         });
+
+        deleteAllBtn.style.display = todos.length > 0 ? 'inline-block' : 'none';
 
         if (filteredTodos.length === 0) {
             todoList.innerHTML = `<p class="empty-list-message">Belum ada tugas.</p>`;
@@ -88,7 +91,7 @@ document.addEventListener('DOMContentLoaded', () => {
             todoDate.classList.add('invalid');
             return;
         } else {
-            validationErrorDate.style.display = 'block';
+            validationErrorDate.style.display = 'none';
             todoDate.classList.remove('invalid');
         }
 
@@ -146,11 +149,19 @@ document.addEventListener('DOMContentLoaded', () => {
         renderTodos(); // Render ulang list sesuai filter
     };
 
+    const deleteAllTodos = () => {
+        if (todos.length > 0) {
+            todos = [];
+            saveTodos();
+            renderTodos();
+        }
+    };
+    
     // --- Event Listeners ---
     todoForm.addEventListener('submit', addTodo);
     todoList.addEventListener('click', handleListClick);
     filterContainer.addEventListener('click', handleFilterClick);
-
+    deleteAllBtn.addEventListener('click', deleteAllTodos);
     // --- Inisialisasi ---
     todoDate.valueAsDate = new Date();
     renderTodos();
