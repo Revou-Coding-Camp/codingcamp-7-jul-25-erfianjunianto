@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Aplikasi MyTo-Do dibuat untuk memenuhi tugas Revo-U coding camp">
+    <title>MyTo-Do</title>
+    <!-- Menghubungkan ke file CSS eksternal -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Ikon dari Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/ico" href="favicon.ico">
+</head>
+<body>
+
+    <div class="app-container">
+        
+        <!-- Judul Aplikasi -->
+        <header>
+            <h1>MyTo-Do</h1>
+            <p>Atur semua tugasmu di satu tempat</p>
+        </header>
+
+        <!-- Form untuk Menambah To-Do -->
+        <form id="todo-form">
+            <div class="form-input-group">
+                <input type="text" id="todo-input" placeholder="Tulis tugas baru...">
+                <p id="validation-error">Tugas tidak boleh kosong!</p>
+            </div>
+            <div class="form-input-group">
+                 <input type="date" id="todo-date">
+                 <p id="validation-error-date">Pilih tanggal dulu!</p>
+            </div>
+            <div class="form-input-group">
+                 <button type="submit" title="Tambah Tugas">
+                    <i class="fas fa-plus"></i>
+                 </button>
+                 
+            </div>
+        </form>
+
+        <!-- Filter To-Do -->
+        <div class="filter-buttons">
+            <button data-filter="all" class="filter-btn active">Semua</button>
+            <button data-filter="pending" class="filter-btn">Belum Selesai</button>
+            <button data-filter="completed" class="filter-btn">Selesai</button>
+        </div>
+
+        <!-- Daftar To-Do -->
+        <div class="todo-container">
+            <ul id="todo-list">
+                <!-- Item to-do akan ditambahkan di sini oleh JavaScript -->
+            </ul>
+        </div>
+
+    </div>
+
+    <script src="js/script.js"></script>
+
+</body>
+</html>

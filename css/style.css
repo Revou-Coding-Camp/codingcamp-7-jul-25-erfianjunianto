@@ -1,0 +1,243 @@
+/* --- Reset & Pengaturan Dasar --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: #f0f2f5;
+    color: #1c1e21;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+/* --- Kontainer Utama --- */
+.app-container {
+    width: 100%;
+    max-width: 500px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 24px;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+header h1 {
+    font-size: 28px;
+    font-weight: 700;
+    color: #333;
+}
+
+header p {
+    font-size: 14px;
+    color: #6c757d;
+}
+
+/* --- Form Input --- */
+#todo-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.form-input-group {
+    flex: 1 1 10px;
+}
+
+#todo-input, #todo-date, #todo-form button {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 14px;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+#todo-input:focus, #todo-date:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+
+#todo-form button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.2s;
+}
+
+#todo-form button:hover {
+    background-color: #0056b3;
+}
+
+/* --- Validasi Error --- */
+#validation-error {
+    color: #dc3545;
+    font-size: 12px;
+    margin-top: 4px;
+    display: none; /* Sembunyikan secara default */
+}
+
+#validation-error-date {
+    color: #dc3545;
+    font-size: 12px;
+    margin-top: 4px;
+    display: none; /* Sembunyikan secara default */
+}
+
+#todo-input.invalid {
+    border-color: #dc3545;
+}
+
+
+#todo-date.invalid {
+    border-color: #dc3545;
+}
+
+/* --- Tombol Filter --- */
+.filter-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 24px;
+}
+
+.filter-btn {
+    background-color: #e9ecef;
+    color: #495057;
+    border: none;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s;
+    line-height: 1.5em;
+}
+
+.filter-btn:hover {
+    background-color: #d3d9df;
+}
+
+.filter-btn.active {
+    background-color: #007bff;
+    color: white;
+}
+
+/* --- Daftar To-Do --- */
+#todo-list {
+    list-style: none;
+    space-y: 12px; /* simulasi space-y */
+}
+
+#todo-list > *:not(:last-child) {
+    margin-bottom: 12px;
+}
+
+.todo-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #f8f9fa;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #e9ecef;
+    animation: fadeIn 0.4s ease-out;
+}
+
+.todo-content {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    overflow: hidden;
+}
+
+.todo-text {
+    font-weight: 500;
+    color: #343a40;
+    transition: color 0.3s, text-decoration 0.3s;
+}
+
+.todo-date {
+    font-size: 12px;
+    background-color: #e9ecef;
+    color: #009107;
+    padding: 3px 8px;
+    border-radius: 10px;
+    white-space: nowrap;
+}
+
+/* Style untuk tugas yang selesai */
+.todo-item.completed .todo-text {
+    text-decoration: line-through;
+    color: #adb5bd;
+}
+
+/* Tombol Aksi (Selesai & Hapus) */
+.todo-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.todo-actions button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    transition: transform 0.2s;
+}
+
+.todo-actions button:hover {
+    transform: scale(1.15);
+}
+
+.complete-btn { color: #28a745; }
+.delete-btn { color: #dc3545; }
+
+.empty-list-message {
+    text-align: center;
+    color: #6c757d;
+    padding: 20px 0;
+}
+
+/* Animasi */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* --- Media Query untuk Responsif --- */
+@media (max-width: 480px) {
+    .app-container {
+        padding: 16px;
+    }
+    
+    #todo-form {
+        flex-direction: column;
+    }
+
+    .form-action-group {
+        flex-direction: row;
+    }
+}
